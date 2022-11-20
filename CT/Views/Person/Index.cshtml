@@ -1,0 +1,139 @@
+﻿@model IEnumerable<CT.Core.Common.DTO.PersonDTO>
+
+@{
+    ViewBag.Title = "Customer service campaign";
+}
+
+<h1>Customer service campaign</h1>
+@if (ViewBag.Poruka != null)
+{
+    <h3 style="color:@ViewBag.Color;">@ViewBag.Poruka</h3>
+}
+
+<p>
+    @using (Html.BeginForm())
+    {
+<p>
+    <input type="number" name="SearchString" title="Only number" placeholder="Customer Id" min="1" />
+    <input class="btn btn-primary" type="submit" value="Add Customer" />
+    <input class="btn btn-primary" type="button" value="ExportCustomers" onclick="location.href='@Url.Action("ExportCustomers", "Person")'" />
+</p>
+}
+    </p>
+    <div style="overflow-x:scroll; white-space: nowrap;">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SSN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FavoriteColors)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StateHome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityHome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StreetHome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipHome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StateOffice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityOffice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StreetOffice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipOffice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CRM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RecordTime)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdPerson }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { id = item.IdPerson }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdPerson }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSN)
+            </td>
+            <td>
+                @Convert.ToDateTime(item.DOB).ToString("dd/MM/yyyy")
+                @*@Html.DisplayFor(modelItem => item.DOB)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FavoriteColors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateOffice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityOffice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetOffice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipOffice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CRM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordTime)
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
